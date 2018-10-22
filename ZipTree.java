@@ -1,26 +1,15 @@
 public class ZipTree {
-	public static  Node root;
-	public ZipTree(){
+	public static Node root;
+	public ZipTree() {
 		this.root = null;
 	}
 	
-	// This is from BST class, has not been converted yet.
-	public boolean find(int id){
-		Node current = root;
-		while(current!=null){
-			if(current.data==id){
-				return true;
-			}else if(current.data>id){
-				current = current.left;
-			}else{
-				current = current.right;
-			}
-		}
-		return false;
+	public boolean find(int id) {
+		
 	}
 	
-	public Node delete(Node x, Node root){
-		if (x.key == root.key {
+	public Node delete(Node x, Node root) {
+		if (x.key == root.key) {
 			return zip(root.left, root.right);
 		}
 
@@ -58,11 +47,11 @@ public class ZipTree {
 		}
 	}
 	
-	public Node insert(Node x, Node root){
+	public Node insert(Node x, Node root) {
 		if (root == null) {
 			x.left = null;
 			x.right = null;
-			//x.rank = callRandomRank();
+			x.rank = randomRank();
 			return x;
 		}
 		
@@ -89,17 +78,22 @@ public class ZipTree {
 		}
 		return root;
 	}
-	
-	public static void main(String arg[]){
+
+	private int randomRank() {
+		int heads = 0;
+		while (Math.random() < 0.5) {
+			heads++;
+		}
+		return heads;
 	}
 }
 
-class Node{
+class Node {
 	int data;
 	int rank;
 	Node left;
 	Node right;	
-	public Node(int data){
+	public Node(int data) {
 		this.data = data;
 		rank = null;
 		left = null;
