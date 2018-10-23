@@ -4,8 +4,24 @@ public class ZipTree {
 		this.root = null;
 	}
 	
-	public boolean find(int id) {
-		
+	public Node find(int key, Node root) {
+		if(root.key == key) {
+            return root;
+        }
+        if(key < root.key) {
+            if(key == root.left.key) {
+                return root.left;
+            } else {
+                find(key, root.left);
+            }
+        } else {
+            if(x.key == root.right.key) {
+                return root.right;
+            } else {
+                find(x, root.right);
+            }
+        }
+        return null;
 	}
 	
 	public Node delete(Node x, Node root) {
@@ -89,12 +105,12 @@ public class ZipTree {
 }
 
 class Node {
-	int data;
+	int key;
 	int rank;
 	Node left;
 	Node right;	
-	public Node(int data) {
-		this.data = data;
+	public Node(int key) {
+		this.key = key;
 		rank = null;
 		left = null;
 		right = null;
