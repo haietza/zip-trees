@@ -72,7 +72,7 @@ public class ZipTree {
 		}
 		
 		if (x.key < root.key) {
-			if (insert(x, root.left == x) {
+			if (insert(x, root.left == x)) {
 				if (x.rank < root.rank) {
 					root.left = x;
 				} else {
@@ -83,7 +83,7 @@ public class ZipTree {
 			}
 		} else {
 			if (insert(x, root.right) == x {
-				if (x.rank <= root.rank {
+				if (x.rank <= root.rank) {
 					root.right = x;
 				} else {
 					root.right = x.left;
