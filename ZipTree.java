@@ -26,81 +26,111 @@ public class ZipTree {
         return null;
 	}
 	
-	public Node delete(Node x, Node root) {
-		if (x.key == root.key) {
-			return zip(root.left, root.right);
-		}
+	public void delete(Node x) {
+        int key = x.key;
+        Node cur = root;
+        Node prev = null;
+        while(key != cur.key) {
+            prev = cur;
+            if(key < cur.key) {
+                cur = cur.left;
+            } else {
+                cur = cur.right;
+            }
+        }
+        Node left = cur.left;
+        Node right = cur.right;
 
-		if (x.key < root.key) {
-			if (x.key == root.left.key) {
-				root.left = zip(root.left.left, root.left.right);
-			} else {
-				delete(x, root.left);
-			}
-		} else {
-			if (x.key == root.right.key) {
-				root.right = zip(root.right.left, root.right.right);
-			} else {
-				delete(x, root.right);
-			}
-		}
-		return root;
-	}
+        if(left == null) {
+            cur = right;
+        } else if(right == null) {
+            cur = left;
+        } else if(left.rank >= right.rank) {
+            cur = left;
+        } else {
+            cur = right;
+        }
 
-	private Node zip(Node x, Node y) {
-		if (x == null) {
-			return y;
-		}
+        if(root == x) {
+            root = cur;
+        } else if(key < prev.key) {
+            prev.left = cur;
+        } else {
+            prev.right = cur;
+        }
 
-		if (y == null) {
-			return x;
-		}
-
-		if (x.rank < y.rank) {
-			y.left = zip(x, y.left);
-			return y;
-		} else {
-			x.right = zip(x.right, y);
-			return x;
-		}
+        while(left != null && right != null) {
+            if(left.rank >= right.rank) {
+                while(left != null && left.rank >= right.rank) {
+                    prev = left;
+                    left = left.right;
+                }
+                prev.right = right;
+            } else {
+                while(right != null && left.rank < right.rank) {
+                    prev = right;
+                    right = right.left;
+                }
+                prev.left = left;
+            }
+        }
 	}
 	
-	public Node insert(Node x, Node root) {
-		if (root == null) {
-			x.left = null;
-			x.right = null;
-            int i = randomRank();
-            System.out.println("Generated Rank: " + i);
-			x.rank = i;
-			return x;
-		}
-		
-		if (x.key < root.key) {
-            System.out.println("x.key < root.key");
-            System.out.println(root.key);
-			if (insert(x, root.left) == x) {
-				if (x.rank < root.rank) {
-					root.left = x;
-				} else {
-					root.left = x.right;
-					x.right = root;
-					return x;
-				}
-			}
-		} else {
-            System.out.println("x.key >= root.key");
-            System.out.println(root.key);
-			if (insert(x, root.right) == x) {
-				if (x.rank <= root.rank) {
-					root.right = x;
-				} else {
-					root.right = x.left;
-					x.left = root;
-					return x;
-				}
-			}
-		}
-		return root;
+	public void insert(Node x) {
+        int rank = randomRank();
+        x.rank = rank;
+        int key = x.key;
+        Node cur = root;
+        Node prev = null;
+        Node fix = null;
+        while(cur != null && (rank < cur.rank || (rank == cur.rank && key > cur.key))) {
+            prev = cur;
+            if(key < cur.key) {
+                cur = cur.left;
+            } else {
+                cur = cur.right;
+            }
+        }
+        if(cur == root) {
+            root = x;
+        } else if(key < prev.key) {
+            prev.left = x;
+        } else {
+            prev.right = x;
+        }
+
+        if(cur == null) {
+            x.left = null;
+            x.right = null;
+            return;
+        }
+        if(key < cur.key) {
+            x.right = cur;
+        } else {
+            x.left = cur;
+        }
+
+        prev = x;
+        
+        while(cur != null) {
+            fix = prev;
+            if(cur.key < key) {
+                while(cur != null && cur.key <= key) {
+                    prev = cur;
+                    cur = cur.right;
+                }
+            } else {
+                while(cur != null && cur.key >= key) {
+                    prev = cur;
+                    cur = cur.left;
+                }
+            }
+            if(fix.key > key || (fix == x && prev.key > key)) {
+                fix.left = cur;
+            } else {
+                fix.right = cur;
+            }
+        }
 	}
 
 	private int randomRank() {
@@ -114,7 +144,7 @@ public class ZipTree {
     public void display(Node root) {
         if(root == null) return;
         display(root.left);
-        System.out.print(root.key);
+        System.out.print(" " + root.key);
         display(root.right);
     }
 

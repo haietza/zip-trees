@@ -10,15 +10,12 @@ public class TestingTrees {
                     new Node(25), new Node(15), new Node(16)};
 
         for(int i : nums) bst.insert(i);
-        for(Node n : nodes) {
-            Node x = zt.insert(n, zt.root);
-            System.out.println("Insert" + n.key + "| Result key from zt: " + x.key);
-            System.out.println("Rank of newly inserted node: " + x.rank);
-        }
+        for(Node n : nodes) zt.insert(n);
         System.out.println("Original BST:" );
         bst.display(bst.root);
         System.out.println();
         System.out.println("Original ZT:" );
         zt.display(zt.root);
+        System.out.println();
     }
 }
