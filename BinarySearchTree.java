@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
 	public static  Node root;
 	public BinarySearchTree(){
@@ -146,6 +149,33 @@ public class BinarySearchTree {
 		System.out.println("\n Delete Node with Two children (10) : " + b.delete(10));		
 		b.display(root);
 	}
+
+    public void printLevelOrder(Node root)
+    {
+        if(root == null)
+            return;
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while(true)
+        {
+            int nodeCount = q.size();
+            if(nodeCount == 0)
+                break;
+            while(nodeCount > 0)
+            {
+                Node node = q.peek();
+                System.out.print(node.key + " ");
+                q.remove();
+                if(node.left != null)
+                    q.add(node.left);
+                if(node.right != null)
+                    q.add(node.right);
+                nodeCount--;
+            }
+            System.out.println();
+        }
+    }
+    
 }
 
 class Node{

@@ -11,11 +11,17 @@ public class TestingTrees {
 
         for(int i : nums) bst.insert(i);
         for(Node n : nodes) zt.insert(n);
-        System.out.println("Original BST:" );
+        System.out.println("---INSERTION TEST---");
+        System.out.println("BST:");
         bst.display(bst.root);
         System.out.println();
-        System.out.println("Original ZT:" );
+        System.out.println("ZT:");
         zt.display(zt.root);
         System.out.println();
+        System.out.println("---PRINT LEVELS---");
+        System.out.println("BST:");
+        bst.printLevelOrder(bst.root);
+        System.out.println("ZT:");
+        zt.printLevelOrder(zt.root);
     }
 }
