@@ -72,11 +72,12 @@ public class ZipTree {
             int i = randomRank();
             System.out.println("Generated Rank: " + i);
 			x.rank = i;
-            this.root = x;
 			return x;
 		}
 		
 		if (x.key < root.key) {
+            System.out.println("x.key < root.key");
+            System.out.println(root.key);
 			if (insert(x, root.left) == x) {
 				if (x.rank < root.rank) {
 					root.left = x;
@@ -87,6 +88,8 @@ public class ZipTree {
 				}
 			}
 		} else {
+            System.out.println("x.key >= root.key");
+            System.out.println(root.key);
 			if (insert(x, root.right) == x) {
 				if (x.rank <= root.rank) {
 					root.right = x;
