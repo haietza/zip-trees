@@ -7,9 +7,9 @@ public class BinarySearchTree {
 	public boolean find(int id){
 		Node current = root;
 		while(current!=null){
-			if(current.data==id){
+			if(current.key==id){
 				return true;
-			}else if(current.data>id){
+			}else if(current.key>id){
 				current = current.left;
 			}else{
 				current = current.right;
@@ -21,9 +21,9 @@ public class BinarySearchTree {
 		Node parent = root;
 		Node current = root;
 		boolean isLeftChild = false;
-		while(current.data!=id){
+		while(current.key!=id){
 			parent = current;
-			if(current.data>id){
+			if(current.key>id){
 				isLeftChild = true;
 				current = current.left;
 			}else{
@@ -108,7 +108,7 @@ public class BinarySearchTree {
 		Node parent = null;
 		while(true){
 			parent = current;
-			if(id<current.data){				
+			if(id<current.key){				
 				current = current.left;
 				if(current==null){
 					parent.left = newNode;
@@ -126,7 +126,7 @@ public class BinarySearchTree {
 	public void display(Node root){
 		if(root!=null){
 			display(root.left);
-			System.out.print(" " + root.data);
+			System.out.print(" " + root.key);
 			display(root.right);
 		}
 	}
@@ -149,12 +149,14 @@ public class BinarySearchTree {
 }
 
 class Node{
-	int data;
+    int rank;
+	int key;
 	Node left;
 	Node right;	
-	public Node(int data){
-		this.data = data;
+	public Node(int key){
+		this.key = key;
 		left = null;
 		right = null;
+        rank = 0;
 	}
 }

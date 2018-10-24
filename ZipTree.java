@@ -1,5 +1,7 @@
 public class ZipTree {
+
 	public static Node root;
+
 	public ZipTree() {
 		this.root = null;
 	}
@@ -15,10 +17,10 @@ public class ZipTree {
                 find(key, root.left);
             }
         } else {
-            if(x.key == root.right.key) {
+            if(key == root.right.key) {
                 return root.right;
             } else {
-                find(x, root.right);
+                find(key, root.right);
             }
         }
         return null;
@@ -67,12 +69,15 @@ public class ZipTree {
 		if (root == null) {
 			x.left = null;
 			x.right = null;
-			x.rank = randomRank();
+            int i = randomRank();
+            System.out.println("Generated Rank: " + i);
+			x.rank = i;
+            this.root = x;
 			return x;
 		}
 		
 		if (x.key < root.key) {
-			if (insert(x, root.left == x)) {
+			if (insert(x, root.left) == x) {
 				if (x.rank < root.rank) {
 					root.left = x;
 				} else {
@@ -82,7 +87,7 @@ public class ZipTree {
 				}
 			}
 		} else {
-			if (insert(x, root.right) == x {
+			if (insert(x, root.right) == x) {
 				if (x.rank <= root.rank) {
 					root.right = x;
 				} else {
@@ -102,17 +107,12 @@ public class ZipTree {
 		}
 		return heads;
 	}
-}
 
-class Node {
-	int key;
-	int rank;
-	Node left;
-	Node right;	
-	public Node(int key) {
-		this.key = key;
-		rank = null;
-		left = null;
-		right = null;
-	}
+    public void display(Node root) {
+        if(root == null) return;
+        display(root.left);
+        System.out.print(root.key);
+        display(root.right);
+    }
+
 }
