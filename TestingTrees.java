@@ -18,9 +18,11 @@ public class TestingTrees {
         System.out.println("ZT:");
         zt.display(zt.root);
         System.out.println();
+        System.out.println();
         System.out.println("---PRINT LEVELS---");
         System.out.println("BST:");
         bst.printLevelOrder(bst.root);
+        System.out.println();
         System.out.println("ZT:");
         zt.printLevelOrder(zt.root);
     }

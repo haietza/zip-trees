@@ -10,11 +10,12 @@ public class ZipTree {
 	}
 	
 	public Node find(int key, Node root) {
-		if(root.key == key) {
+		if (root.key == key) {
             return root;
         }
-        if(key < root.key) {
-            if(key == root.left.key) {
+
+        if (key < root.key) {
+            if (key == root.left.key) {
                 return root.left;
             } else {
                 find(key, root.left);
@@ -33,9 +34,9 @@ public class ZipTree {
         int key = x.key;
         Node cur = root;
         Node prev = null;
-        while(key != cur.key) {
+        while (key != cur.key) {
             prev = cur;
-            if(key < cur.key) {
+            if (key < cur.key) {
                 cur = cur.left;
             } else {
                 cur = cur.right;
@@ -44,33 +45,33 @@ public class ZipTree {
         Node left = cur.left;
         Node right = cur.right;
 
-        if(left == null) {
+        if (left == null) {
             cur = right;
-        } else if(right == null) {
+        } else if (right == null) {
             cur = left;
-        } else if(left.rank >= right.rank) {
+        } else if (left.rank >= right.rank) {
             cur = left;
         } else {
             cur = right;
         }
 
-        if(root == x) {
+        if (root == x) {
             root = cur;
-        } else if(key < prev.key) {
+        } else if (key < prev.key) {
             prev.left = cur;
         } else {
             prev.right = cur;
         }
 
-        while(left != null && right != null) {
-            if(left.rank >= right.rank) {
-                while(left != null && left.rank >= right.rank) {
+        while (left != null && right != null) {
+            if (left.rank >= right.rank) {
+                while (left != null && left.rank >= right.rank) {
                     prev = left;
                     left = left.right;
                 }
                 prev.right = right;
             } else {
-                while(right != null && left.rank < right.rank) {
+                while (right != null && left.rank < right.rank) {
                     prev = right;
                     right = right.left;
                 }
@@ -86,28 +87,30 @@ public class ZipTree {
         Node cur = root;
         Node prev = null;
         Node fix = null;
-        while(cur != null && (rank < cur.rank || (rank == cur.rank && key > cur.key))) {
+        while (cur != null && (rank < cur.rank || (rank == cur.rank && key > cur.key))) {
             prev = cur;
-            if(key < cur.key) {
+            if (key < cur.key) {
                 cur = cur.left;
             } else {
                 cur = cur.right;
             }
         }
-        if(cur == root) {
+
+        if (cur == root) {
             root = x;
-        } else if(key < prev.key) {
+        } else if (key < prev.key) {
             prev.left = x;
         } else {
             prev.right = x;
         }
 
-        if(cur == null) {
+        if (cur == null) {
             x.left = null;
             x.right = null;
             return;
         }
-        if(key < cur.key) {
+        
+        if (key < cur.key) {
             x.right = cur;
         } else {
             x.left = cur;
@@ -115,20 +118,20 @@ public class ZipTree {
 
         prev = x;
         
-        while(cur != null) {
+        while (cur != null) {
             fix = prev;
-            if(cur.key < key) {
-                while(cur != null && cur.key <= key) {
+            if (cur.key < key) {
+                while (cur != null && cur.key <= key) {
                     prev = cur;
                     cur = cur.right;
                 }
             } else {
-                while(cur != null && cur.key >= key) {
+                while (cur != null && cur.key >= key) {
                     prev = cur;
                     cur = cur.left;
                 }
             }
-            if(fix.key > key || (fix == x && prev.key > key)) {
+            if (fix.key > key || (fix == x && prev.key > key)) {
                 fix.left = cur;
             } else {
                 fix.right = cur;
@@ -141,39 +144,47 @@ public class ZipTree {
 		while (Math.random() < 0.5) {
 			heads++;
 		}
-		return heads;
+        return heads;
 	}
 
     public void display(Node root) {
-        if(root == null) return;
+        if (root == null) return;
         display(root.left);
         System.out.print(" " + root.key);
         display(root.right);
     }
 
-    public void printLevelOrder(Node root) 
-    { 
-        if(root == null) 
-            return; 
+    public void printLevelOrder(Node root) { 
+        if (root == null) return; 
         Queue<Node> q = new LinkedList<Node>(); 
         q.add(root); 
-        while(true) 
-        { 
-            int nodeCount = q.size(); 
-            if(nodeCount == 0) 
+        int height = 0;
+        while (true) { 
+            int nodeCount = q.size();
+            if (nodeCount == 0) 
                 break; 
-            while(nodeCount > 0) 
-            { 
-                Node node = q.peek(); 
-                System.out.print(node.key + " "); 
+            System.out.println("Level: " + height);
+            while (nodeCount > 0) { 
+                Node node = q.peek();
+                
+                
+                System.out.println("Key: " + node.key + ", rank: " + node.rank + " "); 
+                if (node.left != null) {
+                    System.out.print("Left: " + node.left.key + ", rank: " + node.left.rank + " ");
+                }
+                if (node.right != null) {
+                    System.out.print("Right: " + node.right.key + ", rank: " + node.right.rank + " ");
+                }
                 q.remove(); 
-                if(node.left != null) 
+                if (node.left != null) 
                     q.add(node.left); 
-                if(node.right != null) 
+                if (node.right != null) 
                     q.add(node.right); 
                 nodeCount--; 
-            } 
-            System.out.println(); 
+            }
+            height++;
+            System.out.println();
+            System.out.println();
         } 
     }
 }
