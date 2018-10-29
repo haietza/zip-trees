@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 public class ZipTree {
 
@@ -82,7 +83,7 @@ public class ZipTree {
 	
 	public void insert(int y) {
         Node x = new Node(y);
-        int rank = randomRank();
+        int rank = randomRankTest();
         x.rank = rank;
         int key = x.key;
         Node cur = root;
@@ -147,6 +148,15 @@ public class ZipTree {
 		}
         return heads;
 	}
+
+    private int randomRankTest() {
+        Random rand = new Random();
+        int heads = 0;
+        while(rand.nextInt(2) != 0) {
+            heads++;
+        }
+        return heads;
+    }
 
     public void display(Node root) {
         if (root == null) return;
