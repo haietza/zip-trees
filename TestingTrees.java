@@ -1,13 +1,15 @@
+import java.util.Random;
 public class TestingTrees {
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
         ZipTree zt = new ZipTree();
 
-        int[] nums = {3,8,1,4,6,2,10,9,20,25,15,16};
+        Random randomGen = new Random();
 
-        for(int i : nums) {
-            bst.insert(i);
-            zt.insert(i);
+        for(int i = 0; i < 1000; i++) {
+            int ran = randomGen.nextInt(100);
+            bst.insert(ran);
+            zt.insert(ran);
         }
         System.out.println("---INSERTION TEST---");
         System.out.println("BST:");
