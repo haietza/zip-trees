@@ -80,7 +80,8 @@ public class ZipTree {
         }
 	}
 	
-	public void insert(Node x) {
+	public void insert(int y) {
+        Node x = new Node(y);
         int rank = randomRank();
         x.rank = rank;
         int key = x.key;
