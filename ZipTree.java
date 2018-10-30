@@ -198,4 +198,28 @@ public class ZipTree {
             System.out.println();
         } 
     }
+    
+    public int printHeight(Node root) {
+        if (root == null) return 0;
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        int height = 0;
+        while (true) {
+            int nodeCount = q.size();
+            if (nodeCount == 0)
+                break;
+            while (nodeCount > 0) {
+                Node node = q.peek();
+                q.remove();
+                if (node.left != null)
+                    q.add(node.left);
+                if (node.right != null)
+                    q.add(node.right);
+                nodeCount--;
+            }
+            height++;
+        }
+        return height;
+    }
+
 }
