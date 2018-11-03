@@ -3,7 +3,7 @@ import java.util.Queue;
 
 public class BinarySearchTree {
 	
-	public static  Node root;
+	public static Node root;
 	
 	public BinarySearchTree() {
 		this.root = null;
@@ -58,7 +58,7 @@ public class BinarySearchTree {
 		else if (current.right == null) {
 			if (current == root) {
 				root = current.left;
-			}else if (isLeftChild) {
+			} else if (isLeftChild) {
 				parent.left = current.left;
 			} else {
 				parent.right = current.left;
@@ -201,20 +201,20 @@ public class BinarySearchTree {
     }
 
     public int printHeight(Node root) {
-        if(root == null) return 0;
+        if (root == null) return 0;
         Queue<Node> q = new LinkedList<Node>();
         q.add(root);
         int height = 0;
         while(true) {
             int nodeCount = q.size();
-            if(nodeCount == 0)
+            if (nodeCount == 0)
                 break;
-            while(nodeCount > 0) {
+            while (nodeCount > 0) {
                 Node node = q.peek();
                 q.remove();
-                if(node.left != null)
+                if (node.left != null)
                     q.add(node.left);
-                if(node.right != null)
+                if (node.right != null)
                     q.add(node.right);
                 nodeCount--;
             }

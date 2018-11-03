@@ -22,7 +22,7 @@ public class ZipTree {
                 find(key, root.left);
             }
         } else {
-            if(key == root.right.key) {
+            if (key == root.right.key) {
                 return root.right;
             } else {
                 find(key, root.right);
@@ -178,7 +178,6 @@ public class ZipTree {
             while (nodeCount > 0) { 
                 Node node = q.peek();
                 
-                
                 System.out.println("Key: " + node.key + ", rank: " + node.rank + " "); 
                 if (node.left != null) {
                     System.out.print("Left: " + node.left.key + ", rank: " + node.left.rank + " ");
@@ -221,5 +220,4 @@ public class ZipTree {
         }
         return height;
     }
-
 }
