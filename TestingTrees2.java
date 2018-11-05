@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
 
-public class TestingTrees {
+public class TestingTrees2 {
     public static void main(String[] args) {
         BinarySearchTree bst;
         ZipTree zt;
@@ -20,7 +20,7 @@ public class TestingTrees {
         long avgAVLTTime = 0;
         long startTime = 0;
 
-        System.out.println("---------------------INSERT TEST--------------------");
+        System.out.println("------------SEQUENTIONIAL INSERT TEST---------------");
         System.out.println("|                                                  |");
 
         for (int j = 0; j < 100; j++) {
@@ -28,8 +28,6 @@ public class TestingTrees {
                 rand.add(i);
                 rand.add(i + 50);
             }
-
-            Collections.shuffle(rand);
             
             bst = new BinarySearchTree();
             zt = new ZipTree();
@@ -74,7 +72,7 @@ public class TestingTrees {
 
         System.out.println("| ------------------100 Elements------------------ |");
         System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "        |       " + avgBSTTime  + "         | ");
+        System.out.println("| |    BST    |       " + avgBSTLevels + "       |       " + avgBSTTime  + "         | ");
         System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "         | ");
         System.out.println("| |    AVLT   |       " + avgAVLTLevels + "         |       " + avgAVLTTime  + "        | ");
         System.out.println("| ------------------------------------------------ |");
@@ -96,8 +94,6 @@ public class TestingTrees {
                 rand.add(i);
                 rand.add(i + 5000);
             }
-
-            Collections.shuffle(rand);
 
             bst = new BinarySearchTree();
             zt = new ZipTree();
@@ -142,7 +138,7 @@ public class TestingTrees {
 
         System.out.println("| -----------------10000 Elements----------------- |");
         System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "        |       " + avgBSTTime  + "       | ");
+        System.out.println("| |    BST    |       " + avgBSTLevels + "     |      " + avgBSTTime  + "     | ");
         System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "       | ");
         System.out.println("| |    AVLT   |       " + avgAVLTLevels + "        |       " + avgAVLTTime  + "       | ");
         System.out.println("| ------------------------------------------------ |");
@@ -164,8 +160,6 @@ public class TestingTrees {
                 rand.add(i);
                 rand.add(i + 500000);
             }
-
-            Collections.shuffle(rand);
 
             bst = new BinarySearchTree();
             zt = new ZipTree();
@@ -210,7 +204,7 @@ public class TestingTrees {
 
         System.out.println("| ----------------1000000 Elements---------------- |");
         System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "      |       " + avgBSTTime  + "      | ");
+        System.out.println("| |    BST    |       " + avgBSTLevels + "   |     " + avgBSTTime  + "      | ");
         System.out.println("| |    ZT     |       " + avgZTLevels + "      |       " + avgZTTime  + "      | ");
         System.out.println("| |    AVLT   |       " + avgAVLTLevels + "       |       " + avgAVLTTime  + "     | ");
         System.out.println("| ------------------------------------------------ |");

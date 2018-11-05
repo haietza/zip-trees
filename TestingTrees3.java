@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.TreeMap;
 
-public class TestingTrees {
+public class TestingTrees3 {
     public static void main(String[] args) {
         BinarySearchTree bst;
         ZipTree zt;
@@ -20,7 +20,7 @@ public class TestingTrees {
         long avgAVLTTime = 0;
         long startTime = 0;
 
-        System.out.println("---------------------INSERT TEST--------------------");
+        System.out.println("-------------------DELETION TEST--------------------");
         System.out.println("|                                                  |");
 
         for (int j = 0; j < 100; j++) {
@@ -28,36 +28,46 @@ public class TestingTrees {
                 rand.add(i);
                 rand.add(i + 50);
             }
-
+           
             Collections.shuffle(rand);
             
             bst = new BinarySearchTree();
             zt = new ZipTree();
             avlt = new AVLTree();
 
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 bst.insert(rand.get(i));
             }
-
-            avgBSTTime += System.nanoTime() - startTime;
-            avgBSTLevels += bst.printHeight(bst.root);
-
-            startTime = System.nanoTime();
+            
             for (int i = 0; i < rand.size(); i++) {
                 zt.insert(rand.get(i));
             }
 
-            avgZTTime += System.nanoTime() - startTime;
-            avgZTLevels += zt.printHeight(zt.root);
-
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 avlt.insert(rand.get(i));
             }
 
-            avgAVLTTime += System.nanoTime() - startTime;
+            avgBSTLevels += bst.printHeight(bst.root);
+            avgZTLevels += zt.printHeight(zt.root);
             avgAVLTLevels += avlt.printHeight(avlt.root);
+
+            Collections.shuffle(rand);
+            
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                bst.delete(rand.get(i));
+            }
+            avgBSTTime += System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                zt.delete(rand.get(i));
+            }
+            avgZTTime += System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                avlt.delete(rand.get(i));
+            }
+            avgAVLTTime += System.nanoTime() - startTime;
 
             rand.clear();
         }
@@ -74,7 +84,7 @@ public class TestingTrees {
 
         System.out.println("| ------------------100 Elements------------------ |");
         System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "        |       " + avgBSTTime  + "         | ");
+        System.out.println("| |    BST    |       " + avgBSTLevels + "       |       " + avgBSTTime  + "         | ");
         System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "         | ");
         System.out.println("| |    AVLT   |       " + avgAVLTLevels + "         |       " + avgAVLTTime  + "        | ");
         System.out.println("| ------------------------------------------------ |");
@@ -103,32 +113,43 @@ public class TestingTrees {
             zt = new ZipTree();
             avlt = new AVLTree();
 
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 bst.insert(rand.get(i));
             }
 
-            avgBSTTime += System.nanoTime() - startTime;
-            avgBSTLevels += bst.printHeight(bst.root);
-
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 zt.insert(rand.get(i));
             }
 
-            avgZTTime += System.nanoTime() - startTime;
-            avgZTLevels += zt.printHeight(zt.root);
-
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 avlt.insert(rand.get(i));
             }
 
-            avgAVLTTime += System.nanoTime() - startTime;
+            avgBSTLevels += bst.printHeight(bst.root);
+            avgZTLevels += zt.printHeight(zt.root);
             avgAVLTLevels += avlt.printHeight(avlt.root);
+
+            Collections.shuffle(rand);
+
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                bst.delete(rand.get(i));
+            }
+            avgBSTTime += System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                zt.delete(rand.get(i));
+            }
+            avgZTTime += System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                avlt.delete(rand.get(i));
+            }
+            avgAVLTTime += System.nanoTime() - startTime;
 
             rand.clear();
         }
+
 
         avgBSTLevels = avgBSTLevels / 100;
         avgZTLevels = avgZTLevels / 100;
@@ -171,32 +192,43 @@ public class TestingTrees {
             zt = new ZipTree();
             avlt = new AVLTree();
 
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 bst.insert(rand.get(i));
             }
 
-            avgBSTTime += System.nanoTime() - startTime;
-            avgBSTLevels += bst.printHeight(bst.root);
-
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 zt.insert(rand.get(i));
             }
 
-            avgZTTime += System.nanoTime() - startTime;
-            avgZTLevels += zt.printHeight(zt.root);
-
-            startTime = System.nanoTime();
             for (int i = 0; i < rand.size(); i++) {
                 avlt.insert(rand.get(i));
             }
 
-            avgAVLTTime += System.nanoTime() - startTime;
+            avgBSTLevels += bst.printHeight(bst.root);
+            avgZTLevels += zt.printHeight(zt.root);
             avgAVLTLevels += avlt.printHeight(avlt.root);
+
+            Collections.shuffle(rand);
+
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                bst.delete(rand.get(i));
+            }
+            avgBSTTime += System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                zt.delete(rand.get(i));
+            }
+            avgZTTime += System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            for(int i = 0; i < rand.size(); i++) {
+                avlt.delete(rand.get(i));
+            }
+            avgAVLTTime += System.nanoTime() - startTime;
 
             rand.clear();
         }
+
 
         avgBSTLevels = avgBSTLevels / 100;
         avgZTLevels = avgZTLevels / 100;

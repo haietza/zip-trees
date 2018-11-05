@@ -31,8 +31,7 @@ public class ZipTree {
         return null;
 	}
 	
-	public void delete(Node x) {
-        int key = x.key;
+	public void delete(int key) {
         Node cur = root;
         Node prev = null;
         while (key != cur.key) {
@@ -56,7 +55,7 @@ public class ZipTree {
             cur = right;
         }
 
-        if (root == x) {
+        if (root.key == key) {
             root = cur;
         } else if (key < prev.key) {
             prev.left = cur;
