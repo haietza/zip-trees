@@ -24,7 +24,7 @@ public class TestingTrees {
         System.out.println("|                                                  |");
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 50; i++) {
                 rand.add(i);
                 rand.add(i + 50);
             }
@@ -92,7 +92,7 @@ public class TestingTrees {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i < 5000; i++) {
                 rand.add(i);
                 rand.add(i + 5000);
             }
@@ -160,7 +160,7 @@ public class TestingTrees {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 1000000; i++) {
+            for (int i = 0; i < 500000; i++) {
                 rand.add(i);
                 rand.add(i + 500000);
             }

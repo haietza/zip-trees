@@ -24,11 +24,11 @@ public class TestingTrees3 {
         System.out.println("|                                                  |");
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 50; i++) {
                 rand.add(i);
-                rand.add(i + 50);
+                rand.add(i+50);
             }
-           
+
             Collections.shuffle(rand);
             
             bst = new BinarySearchTree();
@@ -217,6 +217,7 @@ public class TestingTrees3 {
             avgBSTTime += System.nanoTime() - startTime;
             startTime = System.nanoTime();
             for(int i = 0; i < rand.size(); i++) {
+                System.out.println("Root: " + zt.root);
                 zt.delete(rand.get(i));
             }
             avgZTTime += System.nanoTime() - startTime;

@@ -24,7 +24,7 @@ public class TestingTrees2 {
         System.out.println("|                                                  |");
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 50; i++) {
                 rand.add(i);
                 rand.add(i + 50);
             }
@@ -72,9 +72,9 @@ public class TestingTrees2 {
 
         System.out.println("| ------------------100 Elements------------------ |");
         System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "       |       " + avgBSTTime  + "         | ");
+        System.out.println("| |    BST    |       " + avgBSTLevels + "        |       " + avgBSTTime  + "         | ");
         System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "         | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "         |       " + avgAVLTTime  + "        | ");
+        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "         |       " + avgAVLTTime  + "         | ");
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
     
@@ -90,7 +90,7 @@ public class TestingTrees2 {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i < 5000; i++) {
                 rand.add(i);
                 rand.add(i + 5000);
             }
@@ -156,7 +156,7 @@ public class TestingTrees2 {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 1000000; i++) {
+            for (int i = 0; i < 500000; i++) {
                 rand.add(i);
                 rand.add(i + 500000);
             }
