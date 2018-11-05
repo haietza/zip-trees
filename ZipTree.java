@@ -219,4 +219,33 @@ public class ZipTree {
         }
         return height;
     }
+
+    public static void main(String args[]) {
+		ZipTree zt = new ZipTree();
+		zt.insert(3);
+		zt.insert(8);
+		zt.insert(1);
+		zt.insert(4);
+		zt.insert(6);
+		zt.insert(2);
+		zt.insert(10);
+		zt.insert(9);
+		zt.insert(20);
+		zt.insert(25);
+		zt.insert(15);
+		zt.insert(16);
+		System.out.println("Original Tree: ");
+		zt.display(zt.root);		
+		System.out.println("");
+        System.out.println("Check whether Node with value 4 exists: " + zt.find(4, zt.root));
+        System.out.println("Delete Node with no children (2): ");
+        zt.delete(2);		
+		zt.display(root);
+        System.out.println("\n Delete Node with one child (4): ");
+        zt.delete(4);		
+		zt.display(root);
+        System.out.println("\n Delete Node with Two children (10): ");
+        zt.delete(10);
+		zt.display(root);
+	}
 }

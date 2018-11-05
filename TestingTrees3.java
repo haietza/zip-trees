@@ -26,7 +26,7 @@ public class TestingTrees3 {
         for (int j = 0; j < 100; j++) {
             for (int i = 0; i < 50; i++) {
                 rand.add(i);
-                rand.add(i+50);
+                rand.add(i + 50);
             }
 
             Collections.shuffle(rand);
@@ -102,7 +102,7 @@ public class TestingTrees3 {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i < 5000; i++) {
                 rand.add(i);
                 rand.add(i + 5000);
             }
@@ -181,7 +181,7 @@ public class TestingTrees3 {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 1000000; i++) {
+            for (int i = 0; i < 500000; i++) {
                 rand.add(i);
                 rand.add(i + 500000);
             }
@@ -217,7 +217,6 @@ public class TestingTrees3 {
             avgBSTTime += System.nanoTime() - startTime;
             startTime = System.nanoTime();
             for(int i = 0; i < rand.size(); i++) {
-                System.out.println("Root: " + zt.root);
                 zt.delete(rand.get(i));
             }
             avgZTTime += System.nanoTime() - startTime;
