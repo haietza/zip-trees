@@ -1,6 +1,10 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * AVL Tree code from https://rosettacode.org/wiki/AVL_tree#Java
+ * used under GNU Free Documentation License 1.2.
+ */
 public class AVLTree {
  
     public AVLNode root;
