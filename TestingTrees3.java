@@ -82,11 +82,13 @@ public class TestingTrees3 {
         avgZTTime /= 1000;
         avgAVLTTime /= 1000;
 
+
         System.out.println("| ------------------100 Elements------------------ |");
-        System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "       |       " + avgBSTTime  + "         | ");
-        System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "         | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "         |       " + avgAVLTTime  + "        | ");
+        System.out.printf("| |%11s %16s %17s| |\n", "", "Avg # of Levels", "Avg Time Taken");
+        System.out.println("| |----------------------------------------------| |");
+        System.out.printf("| |%11s %16d %17d| |\n", "BST", avgBSTLevels, avgBSTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "ZT", avgZTLevels, avgZTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "AVLT", avgAVLTLevels, avgAVLTTime);
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
     
@@ -161,14 +163,16 @@ public class TestingTrees3 {
         avgZTTime /= 1000;
         avgAVLTTime /= 1000;
 
+
         System.out.println("| -----------------10000 Elements----------------- |");
-        System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "        |       " + avgBSTTime  + "       | ");
-        System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "       | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "        |       " + avgAVLTTime  + "       | ");
+        System.out.printf("| |%11s %16s %17s| |\n", "", "Avg # of Levels", "Avg Time Taken");
+        System.out.println("| |----------------------------------------------| |");
+        System.out.printf("| |%11s %16d %17d| |\n", "BST", avgBSTLevels, avgBSTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "ZT", avgZTLevels, avgZTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "AVLT", avgAVLTLevels, avgAVLTTime);
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
- 
+
         randomGen = new Random();
 
         rand = new ArrayList<Integer>();
@@ -240,13 +244,16 @@ public class TestingTrees3 {
         avgZTTime /= 1000;
         avgAVLTTime /= 1000;
 
+
         System.out.println("| ----------------1000000 Elements---------------- |");
-        System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "      |       " + avgBSTTime  + "      | ");
-        System.out.println("| |    ZT     |       " + avgZTLevels + "      |       " + avgZTTime  + "      | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "       |       " + avgAVLTTime  + "     | ");
+        System.out.printf("| |%11s %16s %17s| |\n", "", "Avg # of Levels", "Avg Time Taken");
+        System.out.println("| |----------------------------------------------| |");
+        System.out.printf("| |%11s %16d %17d| |\n", "BST", avgBSTLevels, avgBSTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "ZT", avgZTLevels, avgZTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "AVLT", avgAVLTLevels, avgAVLTTime);
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
+
         System.out.println("----------------------------------------------------");
     }
 }

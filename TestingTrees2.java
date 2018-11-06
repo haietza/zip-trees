@@ -70,14 +70,17 @@ public class TestingTrees2 {
         avgZTTime /= 1000;
         avgAVLTTime /= 1000;
 
+
+
         System.out.println("| ------------------100 Elements------------------ |");
-        System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "        |       " + avgBSTTime  + "         | ");
-        System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "         | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "         |       " + avgAVLTTime  + "         | ");
+        System.out.printf("| |%11s %16s %17s| |\n", "", "Avg # of Levels", "Avg Time Taken");
+        System.out.println("| |----------------------------------------------| |");
+        System.out.printf("| |%11s %16d %17d| |\n", "BST", avgBSTLevels, avgBSTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "ZT", avgZTLevels, avgZTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "AVLT", avgAVLTLevels, avgAVLTTime);
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
-    
+
         randomGen = new Random();
 
         rand = new ArrayList<Integer>();
@@ -136,11 +139,13 @@ public class TestingTrees2 {
         avgZTTime /= 1000;
         avgAVLTTime /= 1000;
 
+
         System.out.println("| -----------------10000 Elements----------------- |");
-        System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "     |      " + avgBSTTime  + "     | ");
-        System.out.println("| |    ZT     |       " + avgZTLevels + "        |       " + avgZTTime  + "       | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "        |       " + avgAVLTTime  + "       | ");
+        System.out.printf("| |%11s %16s %17s| |\n", "", "Avg # of Levels", "Avg Time Taken");
+        System.out.println("| |----------------------------------------------| |");
+        System.out.printf("| |%11s %16d %17d| |\n", "BST", avgBSTLevels, avgBSTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "ZT", avgZTLevels, avgZTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "AVLT", avgAVLTLevels, avgAVLTTime);
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
  
@@ -156,9 +161,9 @@ public class TestingTrees2 {
         startTime = 0;
 
         for (int j = 0; j < 100; j++) {
-            for (int i = 0; i < 500000; i++) {
+            for (int i = 0; i < 50000; i++) {
                 rand.add(i);
-                rand.add(i + 500000);
+                rand.add(i + 50000);
             }
 
             bst = new BinarySearchTree();
@@ -202,13 +207,16 @@ public class TestingTrees2 {
         avgZTTime /= 1000;
         avgAVLTTime /= 1000;
 
-        System.out.println("| ----------------1000000 Elements---------------- |");
-        System.out.println("| |           | Avg # of Levels | Avg Time Taken | |");
-        System.out.println("| |    BST    |       " + avgBSTLevels + "   |     " + avgBSTTime  + "      | ");
-        System.out.println("| |    ZT     |       " + avgZTLevels + "      |       " + avgZTTime  + "      | ");
-        System.out.println("| |    AVLT   |       " + avgAVLTLevels + "       |       " + avgAVLTTime  + "     | ");
+
+        System.out.println("| ----------------100000 Elements----------------- |");
+        System.out.printf("| |%11s %16s %17s| |\n", "", "Avg # of Levels", "Avg Time Taken");
+        System.out.println("| |----------------------------------------------| |");
+        System.out.printf("| |%11s %16d %17d| |\n", "BST", avgBSTLevels, avgBSTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "ZT", avgZTLevels, avgZTTime);
+        System.out.printf("| |%11s %16d %17d| |\n", "AVLT", avgAVLTLevels, avgAVLTTime);
         System.out.println("| ------------------------------------------------ |");
         System.out.println("|                                                  |");
+
         System.out.println("----------------------------------------------------");
     }
 }

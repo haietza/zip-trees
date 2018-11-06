@@ -1,7 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
-
+import java.util.ArrayList;
+import java.util.Collections;
 public class ZipTree {
 
 	public static Node root;
@@ -11,24 +12,23 @@ public class ZipTree {
 	}
 	
 	public Node find(int key, Node root) {
-		if (root.key == key) {
+        if(root.key == key) {
             return root;
         }
 
-        if (key < root.key) {
-            if (key == root.left.key) {
+        if(key < root.key) {
+            if(key == root.left.key) {
                 return root.left;
             } else {
-                find(key, root.left);
+                return find(key, root.left);
             }
         } else {
-            if (key == root.right.key) {
+            if(key == root.right.key) {
                 return root.right;
             } else {
-                find(key, root.right);
+                return find(key, root.right);
             }
         }
-        return null;
 	}
 	
 	public void delete(int key) {
@@ -222,30 +222,47 @@ public class ZipTree {
 
     public static void main(String args[]) {
 		ZipTree zt = new ZipTree();
-		zt.insert(3);
-		zt.insert(8);
-		zt.insert(1);
-		zt.insert(4);
-		zt.insert(6);
-		zt.insert(2);
-		zt.insert(10);
-		zt.insert(9);
-		zt.insert(20);
-		zt.insert(25);
-		zt.insert(15);
-		zt.insert(16);
-		System.out.println("Original Tree: ");
-		zt.display(zt.root);		
-		System.out.println("");
-        System.out.println("Check whether Node with value 4 exists: " + zt.find(4, zt.root));
-        System.out.println("Delete Node with no children (2): ");
-        zt.delete(2);		
-		zt.display(root);
-        System.out.println("\n Delete Node with one child (4): ");
-        zt.delete(4);		
-		zt.display(root);
-        System.out.println("\n Delete Node with Two children (10): ");
-        zt.delete(10);
-		zt.display(root);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(3);
+		list.add(8);
+		list.add(1);
+		list.add(4);
+		list.add(6);
+	    list.add(2);
+		list.add(10);
+		list.add(9);
+		list.add(20);
+		list.add(25);
+	    list.add(15);
+	    list.add(16);
+		//System.out.println("Original Tree: ");
+		//zt.display(zt.root);		
+		//System.out.println("");
+
+        Collections.shuffle(list);
+
+        for(int i = 0; i < list.size(); i++) {
+            zt.insert(list.get(i));
+        }
+
+        Collections.shuffle(list);
+
+        for(int i = 0; i < list.size(); i++) {
+            System.out.print("Check " + list.get(i) + " : ");
+            System.out.println("CALLING FIND ON " + list.get(i));
+            Node x = zt.find(list.get(i), zt.root);
+            if(x == null) System.out.println("FOUND NULL");
+            else System.out.println("FOUND " + x.key);
+        }
+                                                        
+        //System.out.println("Delete Node with no children (2): ");
+        //zt.delete(2);		
+		//zt.display(root);
+        //System.out.println("\n Delete Node with one child (4): ");
+        //zt.delete(4);		
+		//zt.display(root);
+        //System.out.println("\n Delete Node with Two children (10): ");
+        //zt.delete(10);
+		zt.printLevelOrder(root);
 	}
 }
