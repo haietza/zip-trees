@@ -22,7 +22,7 @@ public class AVLTree {
             this.parent = parent;
         }
     }
- 
+
     public boolean insert(int key) {
         if (root == null) {
             root = new AVLNode(key, null);
@@ -51,7 +51,7 @@ public class AVLTree {
         }
         return true;
     }
- 
+
     private void delete(AVLNode AVLNode) {
         if (AVLNode.left == null && AVLNode.right == null) {
             if (AVLNode.parent == null) {
@@ -94,6 +94,21 @@ public class AVLTree {
                 return;
             }
         }
+    }
+
+    public boolean find(int key) {
+        if(root == null) {
+            return false;
+        }
+        AVLNode child = root;
+        while(child != null) {
+            AVLNode AVLNode = child;
+            child = key >= AVLNode.key ? AVLNode.right : AVLNode.left;
+            if(key == AVLNode.key) {
+                return true;
+            }
+        }
+        return false;
     }
  
     private void rebalance(AVLNode n) {
@@ -243,6 +258,13 @@ public class AVLTree {
             tree.insert(i);
  
         System.out.print("Printing balance: ");
+        tree.printBalance();
+
+        System.out.println("Finding 1: " + tree.find(1));
+        System.out.println("Finding 5: " + tree.find(5));
+        System.out.println("Finding 8: " + tree.find(8));
+        System.out.println("Finding 0: " + tree.find(0));
+        System.out.println("");
         tree.printBalance();
     }
 }

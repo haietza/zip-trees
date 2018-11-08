@@ -11,20 +11,30 @@ public class ZipTree {
 		this.root = null;
 	}
 	
-	public Node find(int key, Node root) {
+	public boolean find(int key, Node root) {
+        if(root == null) {
+            return false;
+        }
+
         if(root.key == key) {
-            return root;
+            return true;
         }
 
         if(key < root.key) {
+            if(root.left == null) {
+                return false;
+            }
             if(key == root.left.key) {
-                return root.left;
+                return true;
             } else {
                 return find(key, root.left);
             }
         } else {
+            if(root.right == null) {
+                return false;
+            }
             if(key == root.right.key) {
-                return root.right;
+                return true;
             } else {
                 return find(key, root.right);
             }
@@ -250,10 +260,14 @@ public class ZipTree {
         for(int i = 0; i < list.size(); i++) {
             System.out.print("Check " + list.get(i) + " : ");
             System.out.println("CALLING FIND ON " + list.get(i));
-            Node x = zt.find(list.get(i), zt.root);
-            if(x == null) System.out.println("FOUND NULL");
-            else System.out.println("FOUND " + x.key);
+            boolean x = zt.find(list.get(i), zt.root);
+            System.out.println("FOUND " + x);
         }
+        
+        System.out.print("Check 100: ");
+        System.out.println("CALLING FIND ON 100");
+        boolean x = zt.find(100, zt.root);
+        System.out.println("FOUND " + x);
                                                         
         //System.out.println("Delete Node with no children (2): ");
         //zt.delete(2);		
